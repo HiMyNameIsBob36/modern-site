@@ -1,3 +1,11 @@
-* {
+html {
+background: #fff;
+}
+
+main-nav {
+background: #F6F5E5;
+}
+
+body {
 background: #F6F5E5;
 }
