@@ -1,121 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <title>Lock Screen</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+/* ================== VARIABLES ================== */
 :root {
-  --bg: #f5f5f7;
-  --text: #111;
-  --muted: #666;
-  --card: rgba(255,255,255,0.6);
-  --blur: blur(20px);
+  --bg: #e9eaed;
+  --device: #fdfdfd;
+  --text: #0b0b0c;
+  --muted: rgba(0,0,0,0.55);
+  --glass: rgba(255,255,255,0.55);
+  --blur: blur(28px);
 }
 
 body.dark {
-  --bg: #0f0f12;
-  --text: #fff;
-  --muted: #aaa;
-  --card: rgba(40,40,45,0.6);
+  --bg: #0c0d11;
+  --device: #111216;
+  --text: #ffffff;
+  --muted: rgba(255,255,255,0.55);
+  --glass: rgba(35,35,40,0.55);
 }
 
+/* ================== BASE ================== */
 * {
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
 }
 
 body {
   margin: 0;
   height: 100vh;
-  background: var(--bg);
-  color: var(--text);
+  background: radial-gradient(circle at top, #ffffff55, transparent 40%), var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.6s ease, color 0.6s ease;
+  transition: background 0.8s cubic-bezier(.25,.8,.25,1);
 }
 
-.lock {
-  width: 320px;
-  height: 640px;
-  border-radius: 28px;
-  background: var(--card);
-  backdrop-filter: var(--blur);
-  padding: 28px;
+/* ================== DEVICE ================== */
+.phone {
+  width: 360px;
+  height: 720px;
+  border-radius: 34px;
+  background: var(--device);
+  padding: 28px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  animation: appear 1s ease forwards;
+  box-shadow:
+    0 60px 120px rgba(0,0,0,0.25),
+    inset 0 0 0 1px rgba(255,255,255,0.25);
+  animation: deviceIn 1.1s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
-@keyframes appear {
-  from { opacity: 0; transform: translateY(30px) scale(0.95); }
-  to { opacity: 1; transform: none; }
+@keyframes deviceIn {
+  from { opacity: 0; transform: translateY(40px) scale(.96); }
+  to   { opacity: 1; transform: none; }
 }
 
+/* ================== TIME ================== */
 .time {
   text-align: center;
-  animation: slideDown 1.2s ease;
+  margin-top: 8px;
+  animation: timeIn 1.2s cubic-bezier(.2,.8,.2,1);
 }
 
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
+@keyframes timeIn {
+  from { opacity: 0; transform: translateY(-18px); }
   to { opacity: 1; transform: none; }
 }
 
 #clock {
-  font-size: 64px;
+  font-size: 66px;
   font-weight: 600;
-  letter-spacing: -1px;
+  letter-spacing: -1.2px;
+  color: var(--text);
 }
 
 #date {
+  margin-top: 6px;
   font-size: 16px;
   color: var(--muted);
-  margin-top: 4px;
 }
 
+/* ================== APPS ================== */
 .apps {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  margin-top: 24px;
 }
 
 .app {
-  width: 64px;
-  height: 64px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #4f8cff, #6fd3ff);
+  width: 68px;
+  height: 68px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #4f7cff, #69d2ff);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 26px;
+  font-size: 28px;
   cursor: pointer;
-  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s;
+  transition:
+    transform 0.45s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.45s cubic-bezier(.2,.8,.2,1);
 }
 
 .app:hover {
-  transform: translateY(-6px) scale(1.08);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  transform: translateY(-7px) scale(1.07);
+  box-shadow: 0 28px 55px rgba(0,0,0,0.35);
 }
 
+/* ================== TITLE ================== */
 .title {
+  margin-top: 12px;
   text-align: center;
   font-size: 14px;
   color: var(--muted);
-  min-height: 20px;
-  transition: opacity 0.3s ease;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 
+/* ================== BOTTOM ================== */
 .bottom {
   text-align: center;
   font-size: 14px;
   color: var(--muted);
   cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s ease;
+  padding-bottom: 8px;
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease;
 }
 
 .bottom:hover {
@@ -127,7 +145,7 @@ body {
 
 <body>
 
-<div class="lock">
+<div class="phone">
   <div class="time">
     <div id="clock">--:--</div>
     <div id="date">Loading…</div>
@@ -135,60 +153,54 @@ body {
 
   <div>
     <div class="apps">
-      <div class="app" data-title="App Icon">⌁</div>
+      <div class="app" id="app" data-title="App Icon">⌁</div>
     </div>
-    <div class="title" id="title"></div>
+    <div class="title" id="title">App Icon</div>
   </div>
 
   <div class="bottom" id="toggle">Change to dark mode</div>
 </div>
 
 <script>
+/* ===== NSW TIME ===== */
 const clock = document.getElementById("clock");
 const dateEl = document.getElementById("date");
-const toggle = document.getElementById("toggle");
-const title = document.getElementById("title");
-const app = document.querySelector(".app");
 
-// NSW Time
 function updateTime() {
   const now = new Date();
-  const options = {
+  clock.textContent = now.toLocaleTimeString("en-AU", {
     timeZone: "Australia/Sydney",
     hour: "2-digit",
     minute: "2-digit"
-  };
-  const dateOptions = {
+  });
+
+  dateEl.textContent = now.toLocaleDateString("en-AU", {
     timeZone: "Australia/Sydney",
     weekday: "long",
     day: "numeric",
     month: "long"
-  };
-
-  clock.textContent = now.toLocaleTimeString("en-AU", options);
-  dateEl.textContent = now.toLocaleDateString("en-AU", dateOptions);
+  });
 }
 
-setInterval(updateTime, 1000);
 updateTime();
+setInterval(updateTime, 1000);
 
-// Dark mode toggle
-toggle.addEventListener("click", () => {
+/* ===== DARK MODE ===== */
+const toggle = document.getElementById("toggle");
+toggle.onclick = () => {
   document.body.classList.toggle("dark");
-  toggle.textContent = document.body.classList.contains("dark")
-    ? "Change to light mode"
-    : "Change to dark mode";
-});
+  toggle.textContent =
+    document.body.classList.contains("dark")
+      ? "Change to light mode"
+      : "Change to dark mode";
+};
 
-// App hover title
-app.addEventListener("mouseenter", () => {
-  title.textContent = app.dataset.title;
-  title.style.opacity = "1";
-});
+/* ===== APP TITLE HOVER ===== */
+const app = document.getElementById("app");
+const title = document.getElementById("title");
 
-app.addEventListener("mouseleave", () => {
-  title.style.opacity = "0";
-});
+app.onmouseenter = () => title.style.opacity = "1";
+app.onmouseleave = () => title.style.opacity = "0";
 </script>
 
 </body>
