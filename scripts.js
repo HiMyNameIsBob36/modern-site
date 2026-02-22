@@ -16,11 +16,11 @@ class MyHeader extends HTMLElement {
   }
 }
 
-class MyFooter extends HTMLElement {
+class DarkToggle extends HTMLElement {
   connectedCallback() {
       this.innerHTML = `<p>When I feel like it :P</p>`
   }
 }
 
-customElements.define('my-header', MyHeader)
-customElements.define('my-footer', MyFooter)
+customElements.define('main-nav', MyHeader)
+customElements.define('change-colour', DarkToggle)
