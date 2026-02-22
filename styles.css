@@ -74,9 +74,14 @@ margin-left: auto;
 
 change-colour {
  position: fixed;
+ width: 100%;
+}
+
+change-colour {
+ position: fixed;
  bottom: 0px;
  display: flex;
  flex-direction: column;
  align-items: left;
- width: 100%;
+ width: 10%;
 }
