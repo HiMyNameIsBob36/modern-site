@@ -4,9 +4,8 @@ console.log("working just fine!")
 class MyHeader extends HTMLElement {
   connectedCallback() {
       this.innerHTML = `
-     <h1>The Resume of ME :D</h1>
       <div id="navigation">
-        <button onclick=""><img></img></button>
+        <button onclick="showScreen()"><img></button>
       </div>
     `
   }
@@ -14,7 +13,7 @@ class MyHeader extends HTMLElement {
 
 class DarkToggle extends HTMLElement {
   connectedCallback() {
-      this.innerHTML = `<p>When I feel like it :P</p>`
+      this.innerHTML = `<button onclick="toggleColour()"><img></button>`
   }
 }
 
