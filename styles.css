@@ -72,7 +72,7 @@ margin-left: auto;
  border: #768948 solid 4px;
 }
 
-toggle-colour {
+change-colour {
  position: fixed;
  bottom: 0px;
  display: flex;
