@@ -27,18 +27,28 @@ main-nav {
  /* height: 125px; */
 }
 
-#navigationButtons {
+#navigation {
  display: flex;
  flex-direction: row;
  gap: 2vw;
 }
 
-#navigationButtons button {
- width: 10vw;
- height: 35px;
- border-radius: 10px 10px 0px 0px;
- border-bottom: none;
+
+#navigation div {
+
 }
+
+#navigation div:first-child {
+ margin-right: auto;
+}
+
+#navigation div:last-child {
+margin-left: auto;
+}
+
+
+
+
 
 #navigationButtons button, #contentButtons button { 
  transition: border-color 0.3s linear;
