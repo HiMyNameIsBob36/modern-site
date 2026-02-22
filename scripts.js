@@ -13,7 +13,7 @@ class MyHeader extends HTMLElement {
 
 class DarkToggle extends HTMLElement {
   connectedCallback() {
-      this.innerHTML = `<button onclick="toggleColour()"><img></button>`
+      this.innerHTML = `<button onclick="toggleColour()"><img>Toggle Dark Mode</button>`
   }
 }
 
