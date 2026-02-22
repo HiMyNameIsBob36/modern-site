@@ -31,7 +31,7 @@ main-nav {
  display: flex;
  flex-direction: column;
  align-items: center;
- border-bottom: #b39c4d solid 5px;
+ border-bottom: #EBEBDE solid 3px;
  width: 80%;
  height: 15%;
 }
