@@ -1,4 +1,3 @@
-<script>
 /* TIME */
 function updateTime() {
   document.getElementById("time").textContent =
@@ -49,4 +48,3 @@ document.querySelectorAll(".app").forEach(app => {
 document.getElementById("themeToggle").onclick = () => {
   document.body.classList.toggle("dark");
 };
-</script>
