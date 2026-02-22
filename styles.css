@@ -5,7 +5,7 @@ html {
   font-family: 'DM Sans'
 }
 
-body {
+main {
   background-color: #F6F5E5;
   display: flex;
   flex-direction: column;
