@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Lock Screen</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+  --bg: #f5f5f7;
+  --text: #111;
+  --muted: #666;
+  --card: rgba(255,255,255,0.6);
+  --blur: blur(20px);
+}
+
+body.dark {
+  --bg: #0f0f12;
+  --text: #fff;
+  --muted: #aaa;
+  --card: rgba(40,40,45,0.6);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.6s ease, color 0.6s ease;
+}
+
+.lock {
+  width: 320px;
+  height: 640px;
+  border-radius: 28px;
+  background: var(--card);
+  backdrop-filter: var(--blur);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: appear 1s ease forwards;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: none; }
+}
+
+.time {
+  text-align: center;
+  animation: slideDown 1.2s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: none; }
+}
+
+#clock {
+  font-size: 64px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+#date {
+  font-size: 16px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.apps {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.app {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #4f8cff, #6fd3ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s;
+}
+
+.app:hover {
+  transform: translateY(-6px) scale(1.08);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.title {
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  min-height: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.bottom {
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.bottom:hover {
+  color: var(--text);
+  transform: translateY(-2px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="lock">
+  <div class="time">
+    <div id="clock">--:--</div>
+    <div id="date">Loading…</div>
+  </div>
+
+  <div>
+    <div class="apps">
+      <div class="app" data-title="App Icon">⌁</div>
+    </div>
+    <div class="title" id="title"></div>
+  </div>
+
+  <div class="bottom" id="toggle">Change to dark mode</div>
+</div>
+
+<script>
+const clock = document.getElementById("clock");
+const dateEl = document.getElementById("date");
+const toggle = document.getElementById("toggle");
+const title = document.getElementById("title");
+const app = document.querySelector(".app");
+
+// NSW Time
+function updateTime() {
+  const now = new Date();
+  const options = {
+    timeZone: "Australia/Sydney",
+    hour: "2-digit",
+    minute: "2-digit"
+  };
+  const dateOptions = {
+    timeZone: "Australia/Sydney",
+    weekday: "long",
+    day: "numeric",
+    month: "long"
+  };
+
+  clock.textContent = now.toLocaleTimeString("en-AU", options);
+  dateEl.textContent = now.toLocaleDateString("en-AU", dateOptions);
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+
+// Dark mode toggle
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  toggle.textContent = document.body.classList.contains("dark")
+    ? "Change to light mode"
+    : "Change to dark mode";
+});
+
+// App hover title
+app.addEventListener("mouseenter", () => {
+  title.textContent = app.dataset.title;
+  title.style.opacity = "1";
+});
+
+app.addEventListener("mouseleave", () => {
+  title.style.opacity = "0";
+});
+</script>
+
+</body>
+</html>
