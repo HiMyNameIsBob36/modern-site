@@ -128,8 +128,8 @@ body {
 }
 
 .dot.active {
-  background: var(--accent);
-  transform: scale(1.4);
+  border: var(--accent) solid 3px;
+  /*transform: scale(1.4);*/
 }
 
 /* RIGHT PANEL */
