@@ -113,7 +113,7 @@ body {
     margin-bottom: 30px;
 }
 
-hr { display: block; }
+hr { height: 1px; width: 300px; color: #fff;}
 
 .header-text h2 { margin: 0; font-size: 18px; line-height: 1.2; }
 .header-text p { margin: 0; color: #777; font-size: 12px; }
