@@ -1,0 +1,167 @@
+:root {
+    --bg-color: #1b431c; /* Default Forest Green */
+    --phone-bg: #fdfae6; /* Cream color */
+    --btn-color: #2e5323;
+    --text-dark: #1a1a1a;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden; /* Prevents scrolling the phone away */
+}
+
+.phone-frame {
+    width: 350px;
+    height: 650px;
+    background: var(--phone-bg);
+    border-radius: 40px;
+    border: 10px solid #fff;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Status Bar */
+.status-bar {
+    height: 40px;
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.battery-img {
+    height: 18px;
+    filter: opacity(0.6);
+    transition: transform 0.3s;
+}
+
+.battery-img:hover { transform: scale(1.2); }
+
+/* App Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 20px;
+}
+
+.app-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.app-icon:hover { transform: scale(1.1); }
+
+.app-icon img {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background: #000;
+}
+
+/* App View (Matches your reference image) */
+.app-view {
+    padding: 20px;
+    height: 100%;
+    animation: slideIn 0.4s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Animation for closing: Apps "rising down" */
+.app-view.closing {
+    animation: slideDown 0.4s ease-in forwards;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(100%); opacity: 0; }
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.header-text h2 { margin: 0; font-size: 20px; color: var(--text-dark); }
+.header-text p { margin: 0; color: #888; font-size: 12px; }
+
+.header-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    background: #000;
+}
+
+.app-description {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.btn-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pill-btn {
+    background: var(--btn-color);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 14px;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.pill-btn:hover {
+    filter: brightness(1.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Home Button */
+.nav-bar {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.home-btn:hover {
+    background: rgba(0,0,0,0.05);
+    border-color: var(--btn-color);
+    transform: scale(1.05);
+}
