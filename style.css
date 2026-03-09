@@ -113,7 +113,7 @@ body {
     margin-bottom: 30px;
 }
 
-hr { height: 1px; width: 300px; color: #fff;}
+hr { height: 1px; width: 300px; color: #E3E0CF;}
 
 .header-text h2 { margin: 0; font-size: 18px; line-height: 1.2; }
 .header-text p { margin: 0; color: #777; font-size: 12px; }
@@ -136,7 +136,7 @@ hr { height: 1px; width: 300px; color: #fff;}
     cursor: pointer;
 }
 
-.pill-btn:hover { background: #3d6e2f; transform: scale(1.02); }
+.pill-btn:hover { /*background: #3d6e2f;*/ background: rgba(0,0,0,0.1); transform: scale(1.02); }
 
 /* Bottom Nav */
 .nav-bar {
