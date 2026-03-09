@@ -82,6 +82,7 @@ function renderSettings() {
 
 window.changeTheme = (color) => {
     document.documentElement.style.setProperty('--bg-outside', color);
+    document.documentElement.style.setProperty('--btn-color', color);
 };
 
 // Home Button Logic
