@@ -178,6 +178,7 @@ hr { height: 1px; width: 300px; color: #E3E0CF;}
     justify-content: center;
     align-items: center;
     background: linear-gradient(transparent, var(--phone-bg) 40%);
+    padding-bottom: env(safe-area-inset-bottom, 20px);
 }
 
 .home-btn {
