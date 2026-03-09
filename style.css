@@ -36,7 +36,7 @@ body {
  height: 100wh;
  width: 100vw;
  background-color: rbga(33, 33, 33, 0.5);
- colour: white;
+ color: white;
  z-index: 2;
  text-align: center;
  justify-content: center;
