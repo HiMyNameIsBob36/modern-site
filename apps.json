@@ -1,7 +1,7 @@
 [
     {
         "id": "nswrp",
-        "name": "NSW RP",
+        "name": "New South Wales Roleplay",
         "icon": "https://i.imgur.com/vHq0G9R.png",
         "description": "Description! This will be in the .json file.",
         "year": "2025",
@@ -15,7 +15,7 @@
         "id": "settings",
         "name": "Settings",
         "icon": "https://cdn-icons-png.flaticon.com/512/3953/3953226.png",
-        "description": "Change the phone background color.",
+        "description": "Change the background color of the room.",
         "isSettings": true
     }
 ]
